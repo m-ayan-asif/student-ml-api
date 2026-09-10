@@ -21,9 +21,10 @@ async def health():
     return {
         "status": "healthy",
         "application": "student-ml-api",
-        "version": VERSION
+        "application_version": VERSION,
+        "model_version": "model-1"
+        
     }
-
 
 @app.post("/predict")
 async def predict(req: PredictRequest):

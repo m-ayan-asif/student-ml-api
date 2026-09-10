@@ -3,15 +3,15 @@ from app import app
 
 client = TestClient(app)
 
-
 def test_health():
     response = client.get("/health")
     assert response.status_code == 200
     body = response.json()
     assert body["status"] == "healthy"
     assert body["application"] == "student-ml-api"
-    assert body["version"] == "1.0.0"
-
+    assert body["application_version"] == "1.1.0"
+    assert body["model_version"] == "model-1"
+    
 
 def test_predict_success():
     response = client.post("/predict", json={"value": 10})
